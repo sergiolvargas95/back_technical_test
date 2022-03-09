@@ -42,6 +42,7 @@ class m220309_170845_user_order_product extends Migration
                 'request_time' => $this->time(),
                 'delivery_time' => $this->time(),
                 'totalPrice' => $this->integer(),
+                'idProduct' => $this->integer(),
                 'idUser' => $this->integer(),
             ], $tableOptions);
 
@@ -60,7 +61,8 @@ class m220309_170845_user_order_product extends Migration
                 'unitValue' => $this->integer(40)->notNull(),
             ], $tableOptions);
 
-            $this->addForeignKey('FK_user_order', 'Order', 'idUser', 'user', 'idUser');
+            $this->addForeignKey('FK_user_order', 'Order', 'idUser', 'user', 'id');
+            $this->addForeignKey('FK_product_order', 'Order', 'idProduct', 'Product', 'idProduct');
             $this->addForeignKey('FK_order_product_order', 'Order_product', 'idOrder', 'Order', 'idOrder');
             $this->addForeignKey('FK_order_product_product', 'Order_product', 'idProduct', 'Product', 'idProduct');
         }
