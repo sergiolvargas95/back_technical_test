@@ -16,7 +16,7 @@ class m130524_201442_init extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(20)->notNull(),      //->unique()
             'lastName' => $this->string(20)->notNull(),
-            'nickname' => $this->string(20)->notNull(),
+            'username' => $this->string(20)->notNull(),
             'email' => $this->string(40)->notNull()->unique(),
             'address' => $this->string(30)->notNull(),
             'phone' => $this->integer()->notNull(),

@@ -12,6 +12,10 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
+ * @property string $name
+ * @property string $lastName
+ * @property string $address
+ * @property string $phone
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
@@ -210,4 +214,5 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
 }

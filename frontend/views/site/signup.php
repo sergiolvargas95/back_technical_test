@@ -18,10 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+
+                <?= $form->field($model, 'lastName')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'email') ?>
+
+                <?= $form->field($model, 'address')->textInput(['autofocus' => true]) ?>
+
+                <?= $form->field($model, 'phone')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 

@@ -11,6 +11,10 @@ use common\models\User;
  */
 class SignupForm extends Model
 {
+    public $name;
+    public $lastName;
+    public $address;
+    public $phone;
     public $username;
     public $email;
     public $password;
@@ -35,6 +39,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            [['name', 'lastName', 'address', 'phone'], 'required'],
+            [['name', 'lastName', 'address', 'phone'], 'string', 'max' => 200],
         ];
     }
 
@@ -48,10 +55,14 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
+        $user->name = $this->name;
+        $user->lastName = $this->lastName;
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->address = $this->address;
+        $user->phone = $this->phone;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
