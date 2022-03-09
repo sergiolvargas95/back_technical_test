@@ -32,6 +32,10 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+    const ADMIN = 1;
+    const MANAGER = 2;
+    const DELIVERY_PERSON = 3;
+    const SIMPLE_USER = 4;
 
 
     /**
@@ -60,6 +64,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['role', 'default', 'value' => self::SIMPLE_USER],
+            ['role', 'in', 'range' => [self::SIMPLE_USER, self::DELIVERY_PERSON, self::MANAGER, self::ADMIN]],
         ];
     }
 
